@@ -9,6 +9,7 @@ var contactController = require('../controller/contactController');
 router.route('/contacts')
     .get(contactController.index)
     .post(contactController.new);
+    
 router.route('/contacts/:contact_id')
     .get(contactController.view)
     .patch(contactController.update)

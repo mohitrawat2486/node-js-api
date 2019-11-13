@@ -7,17 +7,18 @@ exports.index = function (req, res) {
     Contact.get(function (err, contacts) {
         if (err) {
             res.json({
-                status: "error",
+                status: false,
                 message: err,
             });
         }
         res.json({
-            status: "success",
+            status: true,
             message: "Contacts retrieved successfully",
             data: contacts
         });
     });
 };
+
 // Handle create contact actions
 exports.new = function (req, res) {
     var contact = new Contact();
@@ -25,11 +26,16 @@ exports.new = function (req, res) {
     contact.gender = req.body.gender;
     contact.email = req.body.email;
     contact.phone = req.body.phone;
-// save the contact and check for errors
+    
+    //save the contact and check for errors
     contact.save(function (err) {
-        // if (err)
-        //     res.json(err);
-res.json({
+        if (err) {
+            res.json({
+                status: false,
+                message: err,
+            });
+        }
+        res.json({
             message: 'New contact created!',
             data: contact
         });
@@ -73,9 +79,9 @@ exports.delete = function (req, res) {
     }, function (err, contact) {
         if (err)
             res.send(err);
-res.json({
-            status: "success",
-            message: 'Contact deleted'
-        });
+        res.json({
+                    status: "success",
+                    message: 'Contact deleted'
+                });
     });
 };

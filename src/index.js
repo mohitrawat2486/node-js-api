@@ -1,10 +1,10 @@
 let express = require('express')
 let app  = express()
-/*let personRoute = require('./routes/person')
-let customerRoute = require('./routes/customer')
-let contactRoute = require('./routes/contact')*/
 
+let personRoute = require('./routes/person')
+let customerRoute = require('./routes/customer')
 let apiRoute = require('./routes/api')
+
 let path = require('path')
 let bodyParser = require('body-parser')
 
@@ -14,12 +14,11 @@ app.use((req,res,next) =>{
 	next()
 })
 
-//app.use(personRoute)
-//app.use(customerRoute)
-//app.use(contactRoute)
-//app.use(apiRoute)
+app.use(personRoute)
+app.use(customerRoute)
+app.use(apiRoute)
+
 // Use Api routes in the App
-app.use('/api', apiRoute);
 app.use(express.static('public'))
 
 //Handler for 404 : Resource not found
