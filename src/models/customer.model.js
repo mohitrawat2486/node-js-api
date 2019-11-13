@@ -10,4 +10,8 @@ let CustomerSchema  = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Customer',CustomerSchema)
+// Export Contact model
+var Customer = module.exports = mongoose.model('customer', CustomerSchema);
+module.exports.get = function (callback, limit) {
+    Customer.find(callback).limit(limit);
+}

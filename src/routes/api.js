@@ -5,6 +5,7 @@ let router = express.Router()
 
 // Import contact controller
 var contactController = require('../controller/contactController');
+var customerController = require('../controller/customerController');
 
 // Contact routes
 router.route('/contacts')
@@ -17,8 +18,14 @@ router.route('/contacts/:contact_id')
     .put(contactController.update)
     .delete(contactController.delete);    
 
-    // Export API routes
-    module.exports = router;    
+// Customer routes
+router.route('/customers')
+    .get(customerController.index)
+    .post(customerController.new);
+
+
+// Export API routes
+module.exports = router;    
 
 
 
