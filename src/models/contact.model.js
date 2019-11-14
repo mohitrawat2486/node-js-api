@@ -1,8 +1,9 @@
 // contactModel.js
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/rest_api');
+mongoose.connect('mongodb://localhost:27017/rest_api',{useNewUrlParser: true});
+
 // Setup schema
-var contactSchema = mongoose.Schema({
+var contactSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -13,6 +14,7 @@ var contactSchema = mongoose.Schema({
     },
     gender: String,
     phone: String,
+    profile_image: String,
     create_date: {
         type: Date,
         default: Date.now

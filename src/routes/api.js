@@ -1,4 +1,3 @@
-let ContactModel = require('../models/contact.model')
 let express = require('express')
 let router = express.Router()
 
