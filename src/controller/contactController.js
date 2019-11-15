@@ -52,7 +52,7 @@ exports.new = function (req, res) {
     
     var base64Data = req.body.profile_image;                                       
     var imageBuffer                      = decodeBase64Image(base64Data);
-    var userUploadedFeedMessagesLocation = './uploads/';
+    var userUploadedFeedMessagesLocation = __dirname+'/uploads/';
     var uniqueRandomImageName            = 'image-' + uniqueSHA1String;
     var imageTypeDetected                = imageBuffer
                                                 .type
@@ -76,7 +76,7 @@ exports.new = function (req, res) {
     contact.gender = req.body.gender;
     contact.email = req.body.email;
     contact.phone = req.body.phone;
-    contact.profile_image = uniqueRandomImageName;
+    contact.profile_image = userUploadedImagePath;
     
     //save the contact and check for errors
     contact.save(function (err) {

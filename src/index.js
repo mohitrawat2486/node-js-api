@@ -24,7 +24,7 @@ app.use((req,res,next)=>{
 
 app.use((err,req,res,next)=>{
 	console.log(err.stack)
-	res.sendFile(path.join(__dirname,'../public/505.html'))
+	res.sendFile(path.join(__dirname+'../public/505.html'))
 })
 
 app.listen(config.app.port,() =>console.info(`Server has started on  ${config.app.port}`))
